@@ -1,0 +1,29 @@
+See instructions in `bank-instructions.pdf`.
+
+Install database :
+- Download mongo db and install it
+- Launch mongod service (usually done during installation)
+- Run command "mongo" in a new console to check mongo db install (the command must prompt successfully)
+
+
+Install project :
+- The API is a node / express project, node and npm must be installed on the server
+- Clone the repository
+- run "npm install" in project folder
+- To create first banker, in project root folder run cmd "node create_first_banker.js".
+  The banker is created with username "banker" and password "banker"
+- run "node server.js" to launch the program. You can access to the api on "http://localhost:3000/api/
+
+
+Unfortunalty the project doesn't have client for now, you have to access api by yourself for now.
+
+Routes are :
+POST bankers : create a new banker (username / password)
+POST bankersession : log as banker
+POST clientsession : log as client
+POST accounts : create new client (userName, userFirstName, balance)
+GET accounts/:id : get account info (balance and transactions)
+POST transfer : transfer money to new account (amount and target)
+GET accounts : get stats about accounts
+DELETE bankersession : logout banker
+DELETE clientsession : logout client
