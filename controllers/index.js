@@ -116,7 +116,7 @@ var createAccount = function(req, res) {
 
     account.save(function(err) {
         if (err)
-            return res.json({success:false,  message: err });
+            return res.json({success:false,  message: err.toString() });
 
         return res.json({success:true,  accountNumber: account._id, accountPassword: pwd });
     });
@@ -157,6 +157,11 @@ var doTransfert = function(req, res) {
 
         var balance = req.user._doc.balance;
         var amount = req.body.amount;
+
+        if(isNaN(amount)){
+            return res.json({success:false,  message: "Expect 'amount' to be a number" });
+        }
+
         var target_id = req.body.target;
         var sourceAccount = req.user;
         var targetAccount;
